@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "622914864864",
+    "firebase_url": "https://test-app-59413.firebaseio.com",
+    "project_id": "test-app-59413",
+    "storage_bucket": "test-app-59413.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622914864864:android:fa2560b931a98418",
+        "android_client_info": {
+          "package_name": "com.boiko.taisa.salon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622914864864-hjnekselplfj2mqbrmn22g48l50sdcee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhSBA3t3VxnqBeubhqId7G6KYAYsHtQSI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622914864864:android:a76730e8811c2c2d",
+        "android_client_info": {
+          "package_name": "com.example.tboiko.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622914864864-hjnekselplfj2mqbrmn22g48l50sdcee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhSBA3t3VxnqBeubhqId7G6KYAYsHtQSI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
