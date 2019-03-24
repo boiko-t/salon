@@ -5,6 +5,6 @@
     <color name="colorAccent">#474444</color>
     <color name="colorBackground">#818181</color>
     <color name="colorWhite">#fff</color>
-    <color name="button_shadow">#64BEBEBE</color>
-    <color name="facebook_button_bg">#3B5998</color>
+    <color name="buttonShadowColor">#64BEBEBE</color>
+    <color name="facebookBrandColor">#3B5998</color>
 </resources>
