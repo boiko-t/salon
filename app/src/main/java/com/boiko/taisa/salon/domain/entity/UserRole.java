@@ -1,7 +1,7 @@
 package com.boiko.taisa.salon.domain.entity;
 
 public enum UserRole {
-    ADMIN("admin"), MATER("master");
+    ADMIN("admin"), MASTER("master");
     private String role;
 
     UserRole(String role) {
