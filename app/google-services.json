@@ -15,8 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "622914864864-hjnekselplfj2mqbrmn22g48l50sdcee.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "622914864864-ffjcrkio16gfm0c378i2uai6nduu063u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.boiko.taisa.salon",
+            "certificate_hash": "cba178aefb3d30f7430c5cef473d46783991c815"
+          }
         }
       ],
       "api_key": [
@@ -25,46 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:622914864864:android:a76730e8811c2c2d",
-        "android_client_info": {
-          "package_name": "com.example.tboiko.demo"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "622914864864-hjnekselplfj2mqbrmn22g48l50sdcee.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBhSBA3t3VxnqBeubhqId7G6KYAYsHtQSI"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622914864864-hjnekselplfj2mqbrmn22g48l50sdcee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

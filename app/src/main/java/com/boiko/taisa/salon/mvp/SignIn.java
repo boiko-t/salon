@@ -17,7 +17,7 @@ public interface SignIn {
     interface View extends MVP.View {
         void signInPassword();
         void signInFacebook();
-        void signInGoole();
+        void signInGoogle();
     }
 
     interface Presenter extends MVP.Presenter {
