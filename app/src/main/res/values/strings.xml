@@ -9,4 +9,7 @@
     <string name="or">OR</string>
     <string name="sign_in_google">Sign in with Google</string>
     <string name="sign_in_facebook">Sign in with Facebook</string>
+
+    <string name="facebook_application_id" translatable="false">573997009777142</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb573997009777142</string>
 </resources>

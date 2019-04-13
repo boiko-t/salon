@@ -21,6 +21,10 @@
             "package_name": "com.boiko.taisa.salon",
             "certificate_hash": "cba178aefb3d30f7430c5cef473d46783991c815"
           }
+        },
+        {
+          "client_id": "622914864864-hjnekselplfj2mqbrmn22g48l50sdcee.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
