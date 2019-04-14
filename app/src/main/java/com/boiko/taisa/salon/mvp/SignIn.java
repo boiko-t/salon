@@ -15,9 +15,11 @@ public interface SignIn {
     }
 
     interface View extends MVP.View {
+        int RC_GOOGLE_SIGN_IN = 100;
         void signInPassword();
         void signInFacebook();
         void signInGoogle();
+        void openSignUpView();
     }
 
     interface Presenter extends MVP.Presenter {

@@ -1,7 +1,5 @@
 package com.boiko.taisa.salon.mvp;
 
-import android.util.Log;
-
 public class SignInPresenter implements SignIn.Presenter {
     private SignIn.View view;
 
@@ -27,6 +25,6 @@ public class SignInPresenter implements SignIn.Presenter {
 
     @Override
     public void signInGoogle() {
-        Log.d("taisa", "signInGoogle: goooogle");
+
     }
 }
