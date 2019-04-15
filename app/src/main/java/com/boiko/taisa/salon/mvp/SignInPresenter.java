@@ -1,7 +1,17 @@
 package com.boiko.taisa.salon.mvp;
 
+import com.boiko.taisa.salon.dal.auth.SignInMethod;
+import com.boiko.taisa.salon.dal.auth.SignInProvider;
+
 public class SignInPresenter implements SignIn.Presenter {
     private SignIn.View view;
+    private SignIn.Model model;
+    private SignInProvider signInProvider;
+
+    public SignInPresenter(SignInProvider signInProvider) {
+        this.signInProvider = signInProvider;
+        model = SignInModel.getInstance();
+    }
 
     @Override
     public void onViewAttach(MVP.View view) {
@@ -14,17 +24,17 @@ public class SignInPresenter implements SignIn.Presenter {
     }
 
     @Override
-    public void signInPassword() {
+    public void onSignInComplete(boolean success) {
 
     }
 
     @Override
-    public void signInFacebook() {
-
+    public void onSignInClick(SignInMethod method) {
+        model.signIn(signInProvider, method);
     }
 
     @Override
-    public void signInGoogle() {
-
+    public void onSignUpViewClick() {
+        view.openSignUpView();
     }
 }

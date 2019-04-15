@@ -1,27 +1,27 @@
 package com.boiko.taisa.salon.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.boiko.taisa.salon.BuildConfig
 import com.boiko.taisa.salon.R
+import com.boiko.taisa.salon.dal.auth.FirebaseSignInProvider
+import com.boiko.taisa.salon.dal.auth.SignInMethod
 import com.boiko.taisa.salon.mvp.SignIn
 import com.boiko.taisa.salon.mvp.SignInPresenter
-import com.google.firebase.auth.FirebaseAuth
-import com.jakewharton.rxbinding2.view.RxView
-import io.reactivex.Observable
-import io.reactivex.disposables.CompositeDisposable
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import android.content.Intent
-import android.text.method.LinkMovementMethod
-import android.util.Log
-import com.boiko.taisa.salon.BuildConfig
-import com.boiko.taisa.salon.mvp.SignIn.View.RC_GOOGLE_SIGN_IN
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.jakewharton.rxbinding2.view.RxView
+import io.reactivex.disposables.CompositeDisposable
 
 
 class SignInActivity : AppCompatActivity(), SignIn.View {
@@ -39,19 +39,14 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
     private lateinit var tvSignUpLink: TextView
     private lateinit var btnSignInGoogle: Button
     private lateinit var btnSignInFacebook: Button
-    private lateinit var signInObservable: Observable<Any>
-    private lateinit var signInGoogleObservable: Observable<Any>
-    private lateinit var signInFacebookObservable: Observable<Any>
-    private lateinit var signUpLinkObservable: Observable<Any>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-        presenter = SignInPresenter()
+        presenter = SignInPresenter(FirebaseSignInProvider(this))
         disposable = CompositeDisposable()
         findViews()
         configureViews()
-        initViewObservables()
         initSubscriptions()
     }
 
@@ -59,29 +54,10 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
         Log.d(TAG, "cliiiiick")
     }
 
-    override fun signInPassword() {
-        presenter.signInPassword()
-    }
-
-    override fun signInFacebook() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun signInGoogle() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(BuildConfig.GOOGLE_REQUEST_ID_TOKEN)
-                .requestEmail()
-                .build()
-
-        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN)
-    }
-
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == RC_GOOGLE_SIGN_IN) {
+        if (requestCode == 100) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
@@ -96,10 +72,7 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val user = firebaseAuth.currentUser
-                    } else {
-                    }
+                    presenter.onSignInComplete(task.isSuccessful)
                 }
     }
 
@@ -118,17 +91,25 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
         super.onDestroy()
     }
 
-    private fun initViewObservables() {
-        signInObservable = RxView.clicks(btnSignIn)
-        signInGoogleObservable = RxView.clicks(btnSignInGoogle)
-        signInFacebookObservable = RxView.clicks(btnSignInFacebook)
-        signUpLinkObservable = RxView.clicks(tvSignUpLink)
+    private fun foo() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(BuildConfig.GOOGLE_REQUEST_ID_TOKEN)
+                .requestEmail()
+                .build()
+
+        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, 100)
     }
 
     private fun initSubscriptions() {
-        disposable.add(signInObservable.subscribe { signInPassword() })
-        disposable.add(signInGoogleObservable.subscribe { signInGoogle() })
-        disposable.add(signUpLinkObservable.subscribe { openSignUpView() })
+        val signInObservable = RxView.clicks(btnSignIn)
+        val signInGoogleObservable = RxView.clicks(btnSignInGoogle)
+        val signUpLinkObservable = RxView.clicks(tvSignUpLink)
+
+        disposable.add(signInObservable.subscribe { presenter.onSignInClick(SignInMethod.EMAIL) })
+        disposable.add(signInGoogleObservable.subscribe { foo() })
+        disposable.add(signUpLinkObservable.subscribe { presenter.onSignUpViewClick() })
     }
 
     private fun findViews() {
