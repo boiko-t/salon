@@ -49,7 +49,8 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
     }
 
     override fun openSignUpView() {
-        Log.d(TAG, "cliiiiick")
+        val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -109,6 +110,8 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
     }
 
     private fun configureViews() {
+        initSubscriptions()
+        supportActionBar?.title = getString(R.string.sign_in_name)
         tvSignUpLink.movementMethod = LinkMovementMethod.getInstance()
     }
 }

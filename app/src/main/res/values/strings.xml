@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Salon</string>
+    <string name="sign_up_name">Create new account</string>
+    <string name="sign_in_name">Login to Salon</string>
     <string name="type_here">Type here</string>
     <string name="logo">Logo</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
     <string name="sign_up_text">No account yet? Create one</string>
     <string name="or">OR</string>
     <string name="sign_in_google">Sign in with Google</string>
