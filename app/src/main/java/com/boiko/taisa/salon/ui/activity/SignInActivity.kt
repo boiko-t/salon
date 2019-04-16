@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.boiko.taisa.salon.BuildConfig
 import com.boiko.taisa.salon.R
 import com.boiko.taisa.salon.dal.auth.FirebaseSignInProvider
 import com.boiko.taisa.salon.dal.auth.SignInMethod
@@ -16,7 +15,6 @@ import com.boiko.taisa.salon.mvp.SignIn
 import com.boiko.taisa.salon.mvp.SignInPresenter
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -57,7 +55,7 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 100) {
+        if (requestCode == SignInMethod.GOOGLE.code) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
@@ -91,24 +89,13 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
         super.onDestroy()
     }
 
-    private fun foo() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(BuildConfig.GOOGLE_REQUEST_ID_TOKEN)
-                .requestEmail()
-                .build()
-
-        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, 100)
-    }
-
     private fun initSubscriptions() {
         val signInObservable = RxView.clicks(btnSignIn)
         val signInGoogleObservable = RxView.clicks(btnSignInGoogle)
         val signUpLinkObservable = RxView.clicks(tvSignUpLink)
 
         disposable.add(signInObservable.subscribe { presenter.onSignInClick(SignInMethod.EMAIL) })
-        disposable.add(signInGoogleObservable.subscribe { foo() })
+        disposable.add(signInGoogleObservable.subscribe { presenter.onSignInClick(SignInMethod.GOOGLE) })
         disposable.add(signUpLinkObservable.subscribe { presenter.onSignUpViewClick() })
     }
 
