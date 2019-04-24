@@ -9,10 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.boiko.taisa.salon.R
-import com.boiko.taisa.salon.dal.auth.FirebaseSignInProvider
+import com.boiko.taisa.salon.dal.auth.CustomFirebaseAuthProvider
 import com.boiko.taisa.salon.dal.auth.SignInMethod
-import com.boiko.taisa.salon.mvp.SignIn
-import com.boiko.taisa.salon.mvp.SignInPresenter
+import com.boiko.taisa.salon.mvp.signin.SignIn
+import com.boiko.taisa.salon.mvp.signin.SignInPresenter
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
@@ -41,7 +41,7 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-        presenter = SignInPresenter(FirebaseSignInProvider(this))
+        presenter = SignInPresenter(CustomFirebaseAuthProvider(this))
         disposable = CompositeDisposable()
         findViews()
         configureViews()
@@ -50,6 +50,11 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
 
     override fun openSignUpView() {
         val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun openHomeView() {
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
 

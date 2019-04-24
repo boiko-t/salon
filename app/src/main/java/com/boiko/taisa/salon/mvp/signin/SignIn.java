@@ -1,11 +1,13 @@
-package com.boiko.taisa.salon.mvp;
+package com.boiko.taisa.salon.mvp.signin;
 
 import com.boiko.taisa.salon.dal.auth.SignInMethod;
-import com.boiko.taisa.salon.dal.auth.SignInProvider;
+import com.boiko.taisa.salon.dal.auth.AuthProvider;
+import com.boiko.taisa.salon.mvp.MVP;
 
 public interface SignIn {
     interface View extends MVP.View {
         void openSignUpView();
+        void openHomeView();
     }
 
     interface Presenter extends MVP.Presenter {
@@ -15,6 +17,6 @@ public interface SignIn {
     }
 
     interface Model extends MVP.Model {
-        void signIn(SignInProvider provider, SignInMethod method);
+        void signIn(AuthProvider provider, SignInMethod method);
     }
 }
