@@ -10,6 +10,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_text">No account yet? Create one</string>
     <string name="or">OR</string>
+    <string name="password_length_error">Your password should be at least 6 characters long!</string>
+    <string name="email_error">Your email is invalid</string>
+    <string name="sign_up_error">Sign up error has occurred</string>
     <string name="sign_in_google">Sign in with Google</string>
     <string name="sign_in_facebook">Sign in with Facebook</string>
 </resources>

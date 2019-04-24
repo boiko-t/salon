@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.boiko.taisa.salon.R
 import com.boiko.taisa.salon.mvp.MVP
 
-class HomeActivity : AppCompatActivity(), MVP.View {
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
