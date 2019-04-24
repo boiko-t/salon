@@ -43,7 +43,7 @@
             android:layout_marginTop="50dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/colorFont"
+            android:textColor="@color/colorPrimaryFont"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
@@ -55,7 +55,7 @@
             android:layout_marginTop="20dp"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColor="@color/colorFont"
+            android:textColor="@color/colorPrimaryFont"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/etEmailAddress" />
@@ -99,7 +99,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1px"
                 android:layout_weight="1"
-                android:background="@color/colorFont" />
+                android:background="@color/colorPrimaryFont" />
 
             <TextView
                 android:id="@+id/tvDivider"
@@ -114,7 +114,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1px"
                 android:layout_weight="1"
-                android:background="@color/colorFont" />
+                android:background="@color/colorPrimaryFont" />
         </LinearLayout>
 
         <Button
@@ -131,7 +131,7 @@
             android:paddingEnd="5dp"
             android:text="@string/sign_in_google"
             android:textAllCaps="false"
-            android:textColor="@color/colorFont"
+            android:textColor="@color/colorPrimaryFont"
             android:textSize="6pt"
             app:layout_constraintEnd_toStartOf="@+id/btnSignInFacebook"
             app:layout_constraintHorizontal_bias="0.5"
