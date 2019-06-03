@@ -36,7 +36,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(dataSet.get(position).getTitle());
         holder.description.setText(dataSet.get(position).getDescription());
-        picasso.load(dataSet.get(position).getUrl())
+        picasso.load(dataSet.get(position).getImageUrl())
                 .into(holder.image);
     }
 

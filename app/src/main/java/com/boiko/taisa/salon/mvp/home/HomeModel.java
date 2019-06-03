@@ -33,7 +33,7 @@ public class HomeModel implements Home.Model {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<Category> categoryList = new ArrayList<>();
                 for (DataSnapshot categorySnapshot: dataSnapshot.getChildren()) {
-                    String url = (String) categorySnapshot.child("icon").getValue();
+                    String url = (String) categorySnapshot.child("imageUrl").getValue();
                     String title = (String) categorySnapshot.child("name").getValue();
                     String description = (String) categorySnapshot.child("description").getValue();
                     categoryList.add(new Category(url, title, description));

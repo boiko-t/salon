@@ -1,22 +1,22 @@
 package com.boiko.taisa.salon.domain.entity;
 
 public class Category {
-    private String url;
+    private String imageUrl;
     private String title;
     private String description;
 
-    public Category(String url, String title, String description) {
-        this.url = url;
+    public Category(String imageUrl, String title, String description) {
+        this.imageUrl = imageUrl;
         this.title = title;
         this.description = description;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {
