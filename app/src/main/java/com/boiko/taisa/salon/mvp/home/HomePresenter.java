@@ -16,12 +16,17 @@ public class HomePresenter implements Home.Presenter {
         this.view = (Home.View) view;
         model.getStateObservable()
                 .subscribe(state -> {
-                    if (!state.data.isEmpty()) this.view.initCategoryCollection(state.data);
+                    if (!state.data.isEmpty() && this.view != null) this.view.initCategoryCollection(state.data);
                 });
     }
 
     @Override
     public void onViewDetach() {
         this.view = null;
+    }
+
+    @Override
+    public void onNewVisitClick() {
+        this.view.openNewVisitView();
     }
 }

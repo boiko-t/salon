@@ -10,9 +10,11 @@ import io.reactivex.Observable;
 public interface Home {
     interface View extends MVP.View {
         void initCategoryCollection(List<Category> data);
+        void openNewVisitView();
     }
 
     interface Presenter extends MVP.Presenter {
+        void onNewVisitClick();
     }
 
     interface Model extends MVP.Model {
