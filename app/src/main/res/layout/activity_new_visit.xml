@@ -5,8 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.NewVisitActivity">
-    <TextView
-        android:layout_width="match_parent"
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new visit"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="10dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/caption"
+        android:layout_marginTop="20dp"
+        android:text="@string/new_visit_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="9pt"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/etClientName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:hint="@string/client_name"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryFont"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/caption" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/serviceCaption"
+        android:layout_marginTop="10dp"
+        android:text="@string/service_caption"
+        android:textColor="@color/colorPrimaryFont"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toStartOf="@id/spinServicesList"
+        app:layout_constraintTop_toBottomOf="@id/etClientName"/>
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinServicesList"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintStart_toEndOf="@id/serviceCaption"
+        app:layout_constraintTop_toBottomOf="@id/etClientName"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/productsCaption"
+        android:layout_marginTop="25dp"
+        android:text="@string/products_caption"
+        android:textColor="@color/colorPrimaryFont"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@id/spinServicesList"/>
+
 </android.support.constraint.ConstraintLayout>

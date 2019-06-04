@@ -36,7 +36,6 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
     private lateinit var btnSignIn: Button
     private lateinit var tvSignUpLink: TextView
     private lateinit var btnSignInGoogle: Button
-    private lateinit var btnSignInFacebook: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,7 +110,6 @@ class SignInActivity : AppCompatActivity(), SignIn.View {
         btnSignIn = findViewById(R.id.btnSignIn)
         tvSignUpLink = findViewById(R.id.tvSignUpLink)
         btnSignInGoogle = findViewById(R.id.btnSignInGoogle)
-        btnSignInFacebook = findViewById(R.id.btnSignInFacebook)
     }
 
     private fun configureViews() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fb8c00</color>
-    <color name="colorPrimaryDark">#c25e00</color>
+    <color name="colorPrimary">#318F35</color>
+    <color name="colorPrimaryDark">#0A5F0C</color>
     <color name="colorPrimaryFont">#000</color>
-    <color name="colorSecondaryFont">#212121</color>
+    <color name="colorSecondaryFont">#495057</color>
     <color name="colorWhite">#fff</color>
     <color name="buttonShadowColor">#64BEBEBE</color>
     <color name="facebookBrandColor">#3B5998</color>

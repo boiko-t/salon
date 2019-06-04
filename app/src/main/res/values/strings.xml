@@ -17,6 +17,8 @@
     <string name="sign_in_google">Sign in with Google</string>
     <string name="sign_in_facebook">Sign in with Facebook</string>
 
-    <string name="facebook_application_id" translatable="false">573997009777142</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb573997009777142</string>
+    <string name="new_visit_title">Create new visit to send to your administrator</string>
+    <string name="client_name">Client name</string>
+    <string name="service_caption">Select caption</string>
+    <string name="products_caption">Add products</string>
 </resources>
