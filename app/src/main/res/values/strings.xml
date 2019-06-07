@@ -19,6 +19,7 @@
 
     <string name="new_visit_title">Create new visit to send to your administrator</string>
     <string name="client_name">Client name</string>
-    <string name="service_caption">Select caption</string>
+    <string name="service_caption">Select service</string>
     <string name="products_caption">Add products</string>
+    <string name="send_visit_caption">Send</string>
 </resources>

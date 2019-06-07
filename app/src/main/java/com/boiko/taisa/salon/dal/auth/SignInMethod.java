@@ -1,7 +1,7 @@
 package com.boiko.taisa.salon.dal.auth;
 
 public enum SignInMethod  {
-    EMAIL(100), FACEBOOK(200), GOOGLE(300);
+    EMAIL(100), GOOGLE(300);
 
     private int code;
 

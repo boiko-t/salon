@@ -2,6 +2,7 @@ package com.boiko.taisa.salon.mvp.visit;
 
 import com.boiko.taisa.salon.domain.entity.Product;
 import com.boiko.taisa.salon.domain.entity.SalonService;
+import com.boiko.taisa.salon.domain.entity.Visit;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +19,7 @@ import io.reactivex.subjects.BehaviorSubject;
 public class NewVisitModel implements NewVisit.Model {
     private static NewVisitModel INSTANCE;
     private BehaviorSubject<State> stateObservable = BehaviorSubject.create();
-    private State state = new State(new ArrayList<>(), new ArrayList<>());
+    private State state = new State(new ArrayList<>(), new ArrayList<>(), new Visit());
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference servicesNode = database.getReference("services");
@@ -74,6 +75,11 @@ public class NewVisitModel implements NewVisit.Model {
                 // Failed to read value
             }
         });
+    }
+
+    @Override
+    public State getState() {
+        return state;
     }
 
     @Override

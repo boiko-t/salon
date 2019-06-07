@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.boiko.taisa.salon.R;
 import com.boiko.taisa.salon.domain.entity.Product;
-import com.boiko.taisa.salon.domain.entity.SalonService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ public class ProductSpinnerAdapter extends ArrayAdapter<Product> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
         if(listItem == null)
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.spinner_list_item_layout, parent, false);
         Product currentProduct = list.get(position);
         TextView title = listItem.findViewById(R.id.tvTitle);
 

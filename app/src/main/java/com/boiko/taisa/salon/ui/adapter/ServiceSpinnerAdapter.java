@@ -31,7 +31,7 @@ public class ServiceSpinnerAdapter extends ArrayAdapter<SalonService> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
         if(listItem == null)
-            listItem = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+            listItem = LayoutInflater.from(context).inflate(R.layout.spinner_list_item_layout, parent, false);
         SalonService currentService = list.get(position);
         TextView title = listItem.findViewById(R.id.tvTitle);
 

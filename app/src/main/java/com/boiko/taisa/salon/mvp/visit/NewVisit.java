@@ -1,7 +1,11 @@
 package com.boiko.taisa.salon.mvp.visit;
 
+import android.app.Service;
+
 import com.boiko.taisa.salon.domain.entity.Product;
+import com.boiko.taisa.salon.domain.entity.ProductUsageRecord;
 import com.boiko.taisa.salon.domain.entity.SalonService;
+import com.boiko.taisa.salon.domain.entity.Visit;
 import com.boiko.taisa.salon.mvp.MVP;
 
 import java.util.List;
@@ -15,19 +19,25 @@ public interface NewVisit {
     }
 
     interface Presenter extends MVP.Presenter {
+        void onClientNameUpdate(String name);
+        void onServiceUpdate(SalonService service);
+        void onProductListUpdate(List<ProductUsageRecord> products);
     }
 
     interface Model extends MVP.Model {
         void loadBaseData();
+        State getState();
         Observable<State> getStateObservable();
 
         class State {
             public List<SalonService> services;
             public List<Product> products;
+            public Visit visit;
 
-            public State(List<SalonService> services, List<Product> products) {
+            public State(List<SalonService> services, List<Product> products, Visit visit) {
                 this.services = services;
                 this.products = products;
+                this.visit = visit;
             }
         }
     }
