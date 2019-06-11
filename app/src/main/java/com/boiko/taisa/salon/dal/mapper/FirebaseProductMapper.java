@@ -1,4 +1,4 @@
-package com.boiko.taisa.salon.domain.mapper;
+package com.boiko.taisa.salon.dal.mapper;
 
 import com.boiko.taisa.salon.domain.entity.Product;
 import com.google.firebase.database.DataSnapshot;

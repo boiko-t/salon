@@ -1,8 +1,10 @@
 package com.boiko.taisa.salon.mvp.visit;
 
+import com.boiko.taisa.salon.dal.mapper.FirebaseVisitMapper;
 import com.boiko.taisa.salon.domain.entity.Product;
 import com.boiko.taisa.salon.domain.entity.SalonService;
 import com.boiko.taisa.salon.domain.entity.Visit;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -11,7 +13,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
@@ -24,6 +28,7 @@ public class NewVisitModel implements NewVisit.Model {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference servicesNode = database.getReference("services");
     private DatabaseReference productsNode = database.getReference("products");
+    private DatabaseReference visitNode = database.getReference("visits");
 
     public static NewVisitModel getInstance() {
         if (INSTANCE == null) {
@@ -75,6 +80,16 @@ public class NewVisitModel implements NewVisit.Model {
                 // Failed to read value
             }
         });
+    }
+
+    @Override
+    public void submitVisit() {
+        FirebaseVisitMapper mapper = new FirebaseVisitMapper();
+        state.visit.setMasterName(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        String key = visitNode.push().getKey();
+        Map<String, Object> visitUpdate = new HashMap<>();
+        visitUpdate.put("visit" + key, mapper.mapToFirebaseObject(state.visit));
+        visitNode.updateChildren(visitUpdate);
     }
 
     @Override

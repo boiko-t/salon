@@ -22,10 +22,12 @@ public interface NewVisit {
         void onClientNameUpdate(String name);
         void onServiceUpdate(SalonService service);
         void onProductListUpdate(List<ProductUsageRecord> products);
+        void onVisitSubmit();
     }
 
     interface Model extends MVP.Model {
         void loadBaseData();
+        void submitVisit();
         State getState();
         Observable<State> getStateObservable();
 

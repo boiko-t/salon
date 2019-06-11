@@ -1,5 +1,9 @@
 package com.boiko.taisa.salon.domain.entity;
 
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
+import com.annimon.stream.function.BinaryOperator;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +11,6 @@ import java.util.List;
 public class Visit {
     private String id;
     private String masterName;
-    private User author;
     private String clientName;
     private SalonService service;
     private List<ProductUsageRecord> products;
@@ -68,11 +71,15 @@ public class Visit {
         this.clientName = clientName;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return date.toString();
     }
 
     public int getPrice() {
-        return price;
+        int productsPrice = Stream.of(products)
+                .map(ProductUsageRecord::getPrice)
+                .reduce(0, (BinaryOperator<Integer>) (previous, current) -> previous + current);
+
+        return service.getPrice() + productsPrice;
     }
 }

@@ -50,4 +50,9 @@ public class NewVisitPresenter implements NewVisit.Presenter {
     public void onProductListUpdate(List<ProductUsageRecord> products) {
         model.getState().visit.setProducts(products);
     }
+
+    @Override
+    public void onVisitSubmit() {
+        model.submitVisit();
+    }
 }
